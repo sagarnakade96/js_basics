@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    let divCreation = document.createElement("div");
+    // console.log(divCreation);
+    divCreation.className = "main";
+    divCreation.id = Math.round(Math.random() * 10);
+    divCreation.setAttribute("title", "generated title");
+    divCreation.style.backgroundColor = "red";
+    const addText = document.createTextNode("this is detailed view");
+    divCreation.appendChild(addText);
+    document.body.appendChild(divCreation);
+    console.log(divCreation);
+  </script>
+</html>

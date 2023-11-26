@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events</title>
+  </head>
+  <body style="background-color: #414141; color: aliceblue">
+    <h2>Images List</h2>
+    <div>
+      <ul id="images">
+        <li>
+          <img
+            width="200px"
+            id="photoshop"
+            src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt="image_1"
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="japan"
+            src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt="image_2"
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="river"
+            src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt="image_3"
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="owl"
+            src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt="image_4"
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="prayer"
+            src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt="image_5"
+          />
+        </li>
+        <li>
+          <a
+            style="color: aliceblue"
+            target="_blank"
+            href="https://google.com"
+            id="google"
+            >Google</a
+          >
+        </li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    const owlElementImage = document.querySelector("#owl");
+    console.log(owlElementImage);
+    owlElementImage.addEventListener("click", function (e) {
+      console.log("Type Event");
+      console.log(e.type);
+
+      console.log("Event timestamp");
+      console.log(e.timeStamp);
+
+      console.log("Event :-> ");
+      console.log(e.defaultPrevented);
+
+      //   console.log("Event :-> ");
+      e.preventDefault();
+
+      console.log("Event :->  defaultPrevented");
+      console.log(e.defaultPrevented);
+
+      console.log("Event :-> currentTarget");
+      console.log(e.currentTarget);
+
+      console.log("Event :-> clientX");
+      console.log(e.clientX);
+
+      console.log("Event :-> clientY");
+      console.log(e.clientY);
+
+      console.log("Event :-> screenX");
+      console.log(e.screenX);
+
+      console.log("Event :-> screenY");
+      console.log(e.screenY);
+
+      console.log("Event :-> tiltX");
+      console.log(e.tiltX);
+
+      console.log("Event :-> tiltY");
+      console.log(e.tiltY);
+
+      console.log("Event :-> altKey");
+      console.log(e.altKey);
+
+      console.log("Event :-> ctrlKey");
+      console.log(e.ctrlKey);
+    });
+  </script>
+</html>

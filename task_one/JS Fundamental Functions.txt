@@ -1,0 +1,31 @@
+// fundamental functions of JS .maps(), .reduce(), .filter()
+
+
+// .maps()
+let arr =[2,4,5,6,7]
+let mulFunc = (a) => {
+    return a*2;
+}
+let arr2 = arr.map(mulFunc);
+
+console.log(arr2)
+
+// .filter()
+let arr3 = [5,10,15,99,66,4,1]
+let divByFive = (a) => {
+    return  a%5==0;
+}
+let arr4 = arr3.filter(divByFive)
+console.log(arr4)
+
+
+// .reduce()
+
+let arr5=[4,1,2,3];
+
+let sumFunc = (num, ind) => {
+    return num+ind;
+}
+
+let arr6 = arr5.reduce(sumFunc);
+console.log(arr6);

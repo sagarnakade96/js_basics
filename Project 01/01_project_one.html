@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Change Colors</title>
+    <style>
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        width: 300px;
+      }
+
+      .box-blue,
+      .box-grey,
+      .box-white,
+      .box-yellow {
+        width: 100px;
+        height: 100px;
+        margin: 10px;
+        padding: 10px;
+        border: black 2px solid;
+      }
+      .box-blue {
+        background-color: blue;
+      }
+      .box-grey {
+        background-color: grey;
+      }
+      .box-white {
+        background-color: white;
+      }
+      .box-yellow {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="box-blue" onclick="changePageColor('blue')">blue</div>
+      <div class="box-grey" onclick="changePageColor('grey')">grey</div>
+      <div class="box-white" onclick="changePageColor('white')">white</div>
+      <div class="box-yellow" onclick="changePageColor('yellow')">yellow</div>
+    </div>
+  </body>
+  <script>
+    function changePageColor(colorName) {
+      let fetchElement = document.querySelector("body");
+      fetchElement.style.backgroundColor = colorName;
+    }
+  </script>
+</html>

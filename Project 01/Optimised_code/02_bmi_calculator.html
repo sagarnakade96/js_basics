@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BMI Calculator</title>
+    <style>
+      body {
+        background-color: rgb(233, 233, 233);
+      }
+      .heading-container {
+        display: grid;
+        place-items: center;
+      }
+      .container {
+        display: grid;
+        place-items: center;
+      }
+
+      #submitBtn {
+        background: black;
+        color: azure;
+        border-radius: 5px;
+        padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="heading-container">
+      <h1>BMI Calculator</h1>
+    </div>
+    <div class="container">
+      <form>
+        <p>
+          <label
+            >Enter Height in CM :
+            <input type="input" class="user-input" id="user-height"
+          /></label>
+        </p>
+        <p>
+          <label
+            >Enter Weight in KG :
+            <input type="input" class="user-input" id="user-weight"
+          /></label>
+        </p>
+        <p>
+          <input
+            type="submit"
+            class="submitBtn"
+            id="submitBtn"
+            value="Calculate BMI"
+          />
+        </p>
+      </form>
+      <div class="result-box"></div>
+      <div class="instruction-box">
+        <h3>Note:</h3>
+        <ul>
+          <li>less than 18.6 => Under Weight</li>
+          <li>18.6 to 24.9 => Normal Weight</li>
+          <li>Greater than 24.9 => Overweight</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+  <script>
+    const form = document.querySelector("form");
+    const result = document.querySelector(".result-box");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      // user input
+      let height = parseInt(document.querySelector("#user-height").value);
+      let weight = parseInt(document.querySelector("#user-weight").value);
+
+      // validate input
+      validateFunc(height, weight);
+
+      // display result
+      let bmi = (weight / ((height * height) / 10000)).toFixed(2);
+      let status = fetchStatus(bmi);
+
+      result.innerHTML = `<span>Calculated BMI : ${bmi}, status : ${status}</span>`;
+    });
+    const validateFunc = (height, weight) => {
+      if (height === "" || height < 0 || isNaN(height)) {
+        result.innerHTML = `<span> Please Enter Valid Input</span>`;
+      } else if (weight === "" || weight < 0 || isNaN(weight)) {
+        result.innerHTML = `<span> Please Enter Valid Input</span>`;
+      } else {
+        return;
+      }
+    };
+
+    const fetchStatus = (bmi) => {
+      if (bmi > 24.9) {
+        return "Over Weight";
+      } else if (bmi > 18.6 && bmi < 24.9) {
+        return "Normal Weight";
+      } else if (bmi < 18.6) {
+        return "Under Weight";
+      }
+    };
+  </script>
+</html>

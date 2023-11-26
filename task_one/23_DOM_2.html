@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="parent">
+      <li class="day">Monday</li>
+      <li class="day">Tuesday</li>
+      <li class="day">Wednesday</li>
+      <li class="day">Thursday</li>
+      <li class="day">Friday</li>
+    </div>
+  </body>
+  <script>
+    // let mainParent = document.getElementsByClassName("parent");
+    // console.log(mainParent);
+    let mainParentQuery = document.querySelector(".parent");
+    // console.log(mainParentQuery);
+    // console.log(mainParentQuery.children[1].innerHTML);
+    for (let i = 0; i < mainParentQuery.children.length; i++) {
+      const element = mainParentQuery.children[i];
+      element.style.color = "blue";
+      //   console.log(element.innerHTML);
+    }
+    // console.log(mainParentQuery.firstElementChild);
+    let day1 = document.querySelector(".day");
+    // console.log(day1.parentElement);
+    // nextDay = day1.nextElementSibling; // tuesday
+    // console.log(nextDay.previousElementSibling); // monday
+    console.log("NODES: ", mainParentQuery.childNodes);
+  </script>
+</html>

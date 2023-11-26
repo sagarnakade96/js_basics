@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guess The Number</title>
+  </head>
+  <body>
+    <div class="instruction-box">
+      <h1>Guess The Number</h1>
+      <label>
+        Guess the number between 1-10. User will get 3 attempts to guess.</label
+      >
+    </div>
+    <br />
+    <div class="calculation_div">
+      <input type="text" class="input-box" />
+      <input type="submit" id="submit-btn" class="submit-btn" />
+    </div>
+    <div class="output_box">
+      <ul></ul>
+    </div>
+  </body>
+  <script>
+    const max = 10;
+    const min = 1;
+    const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+    let attemptLeft = 3;
+    let btn = document.querySelector(".submit-btn");
+    let appendItemList = (attemptItem) => {
+      attemptLeft = --attemptLeft;
+      if (attemptLeft == 0) {
+        let opBox = document.querySelector(".output_box");
+        opBox.style.margin = "5px";
+        opBox.style.backgroundColor = "red";
+        opBox.innerHTML = "Game Over!!!";
+        return;
+      }
+
+      let ele = document.createElement("li");
+      document.querySelector(".output_box").appendChild(ele);
+      ele.appendChild(
+        document.createTextNode(
+          `Wrong Attempt -> ${attemptItem}. Attempts Left -> ${attemptLeft}`
+        )
+      );
+    };
+
+    let performAction = () => {
+      let attempt = document.querySelector(".input-box").value;
+      if (randomNumber == attempt) {
+        let opBox = document.querySelector(".output_box");
+        opBox.style.margin = "5px";
+        opBox.style.backgroundColor = "green";
+        opBox.innerHTML = "Won!!!";
+      } else {
+        appendItemList(attempt);
+      }
+    };
+
+    let perform = btn.addEventListener("click", performAction);
+  </script>
+</html>
