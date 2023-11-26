@@ -1,0 +1,23 @@
+// Arrow functions
+const hello = (a,b) => {
+    if (a>=18){
+        console.log("eligible for vote");
+    }
+    else if (a<18){
+        console.log("not eligible for vote");
+    }
+    else{
+        console.log("not valid input");
+    }
+}
+
+hello(6,2);
+
+const bello = (x,y) => {
+    return x*y;
+}
+
+let a = bello(3,5);
+
+console.log(a)
+

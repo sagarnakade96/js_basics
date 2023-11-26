@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guess The Number</title>
+    <style>
+      body {
+        background-color: black;
+        color: white;
+        display: grid;
+        place-items: center;
+      }
+      .main-container {
+        background-color: rgb(105, 0, 47);
+        padding: 15px;
+        border-radius: 20px;
+      }
+      .submitBtn {
+        border-radius: 10px;
+        font-weight: bold;
+      }
+      .prevAttempt,
+      .remAttempt {
+        background-color: rgb(69, 69, 69);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-container">
+      <h1>Guess The Number</h1>
+      <div class="instruction-box">
+        <p>
+          <label>
+            Guess the number between 1-10. User will get 3 attempts to guess.
+          </label>
+        </p>
+      </div>
+      <div class="input-box">
+        <form>
+          <p>
+            <span>
+              Please Enter Number
+              <input type="input" id="guessField" />
+            </span>
+          </p>
+          <p>
+            <input
+              type="submit"
+              class="submitBtn"
+              id="submitBtn"
+              value="Guess the number"
+            />
+          </p>
+        </form>
+      </div>
+    </div>
+    <div class="container">
+      <div class="output-box" id="output-box">
+        <p>
+          <label> Previous Guess : </label>
+          <label class="prevAttempt" id="prevAttempt"> </label>
+        </p>
+        <p>
+          <label>
+            Remaining Attempts :
+            <label class="remAttempt" id="remAttempt" value="3">3</label>
+          </label>
+        </p>
+
+        <p>
+          <label class="gameMessage" id="gameMessage"> </label>
+        </p>
+      </div>
+    </div>
+    <script>
+      // querySelector variables
+      const form = document.querySelector("form");
+      const outputBox = document.querySelector("#output-box");
+      const message = document.querySelector("#gameMessage");
+      let attempt = document.querySelector("#remAttempt");
+      let submit = document.querySelector("#submitBtn");
+      let prevGuess = document.querySelector("#prevAttempt");
+      let userInput = document.querySelector("#guessField");
+      let startOver = document.querySelector("#output-box");
+      // local variables
+      const max = 10;
+      const min = 1;
+      const totalGuess = 4;
+      let startGuess = 1;
+      let playGame = true;
+      let randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+      const p = document.createElement("p");
+      if (playGame) {
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          let guess = parseInt(userInput.value);
+          validationGuess(guess);
+        });
+      }
+
+      const validationGuess = (guess) => {
+        if (guess === "" || guess < min || max < guess || isNaN(guess)) {
+          alert("Please Enter Valid Number");
+        } else if (startGuess === 3) {
+          displayGuess(guess);
+          displayMessages("Game Over!");
+          checkGuess(guess);
+          endGame();
+        } else {
+          displayGuess(guess);
+          checkGuess(guess);
+        }
+      };
+
+      const checkGuess = (guess) => {
+        if (guess < randomNumber) {
+          displayMessages("Guess is low");
+        } else if (randomNumber < guess) {
+          displayMessages("Guess is high");
+        } else if (guess === randomNumber) {
+          displayMessages("You Won!!!");
+          endGame();
+        }
+      };
+
+      const displayGuess = (guess) => {
+        userInput.value = "";
+        prevGuess.innerHTML += `${guess}, `;
+        startGuess++;
+        attempt.innerHTML = `${totalGuess - startGuess}`;
+      };
+
+      const displayMessages = (msg) => {
+        message.innerHTML = `<h2>${msg}</h2>`;
+      };
+
+      const endGame = () => {
+        submit.disabled = true;
+        playGame = false;
+        p.innerHTML = `<h2 id="newGame">Click Here To Start New Game</h2>`;
+        startOver.appendChild(p);
+        startGame();
+      };
+
+      const startGame = () => {
+        const newGame = document.querySelector("#newGame");
+        newGame.addEventListener("click", function (e) {
+          e.preventDefault();
+          message.innerHTML = "";
+          randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+          prevGuess.innerHTML = "";
+          submit.disabled = false;
+          startGuess = 1;
+          attempt.innerHTML = `${totalGuess - startGuess}`;
+          startOver.removeChild(p);
+
+          playGame = true;
+        });
+      };
+    </script>
+  </body>
+</html>

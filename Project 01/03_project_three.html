@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DIGITAL CLOCK</title>
+  </head>
+  <body>
+    <center>
+      <div class="clock">
+        <label>Current Time</label>
+        <h1></h1>
+      </div>
+    </center>
+  </body>
+  <script>
+    let showTime = () => {
+      let time = new Date();
+      let hours = time.getHours();
+      let minutes = time.getMinutes();
+      let seconds = time.getSeconds();
+      let am_pm = "";
+      if (hours <= 12) {
+        am_pm = "AM";
+      } else {
+        am_pm = "PM";
+      }
+      let updatedTime = `${hours} : ${minutes} : ${seconds} : ${am_pm}`;
+      let clockElement = document.querySelector(".clock");
+      let h1Element = clockElement.querySelector("h1");
+      h1Element.innerText = updatedTime;
+    };
+
+    setInterval(showTime, 1000);
+    showTime();
+  </script>
+</html>

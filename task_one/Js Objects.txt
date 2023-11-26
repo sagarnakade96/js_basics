@@ -1,0 +1,14 @@
+// Objects in JS
+
+let fullName = (firstname, lastname, age) =>{
+    const person = {
+        first_name:firstname,
+        last_name:lastname,
+        age:age
+    };
+    return person;
+} 
+
+let fetched_data = fullName("Max", "Wanda", 33);
+console.log(fetched_data);
+console.log(fetched_data.first_name);

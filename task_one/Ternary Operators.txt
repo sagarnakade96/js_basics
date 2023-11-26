@@ -1,0 +1,9 @@
+// Ternary operators
+
+
+let canVote = (a) =>{
+return (a>=18) ? true : false
+}
+
+a = 18;
+console.log(canVote(a));

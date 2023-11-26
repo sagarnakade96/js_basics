@@ -55,7 +55,7 @@ console.log(allNums);
 
 const boys = ["homelander", "starlight", "atrain", "deep"];
 const newAvengers = [...marvel, ...dc, ...boys];
-console.log(newAvengers);
+console.log(`New avengers are : ${newAvengers}`);
 
 const filterAvengers = newAvengers.filter((x) => x.length < 7);
 console.log(filterAvengers);
