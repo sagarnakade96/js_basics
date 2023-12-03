@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bind In JS</title>
+  </head>
+  <body>
+    <button id="sampleButton"><h1>Click Me</h1></button>
+  </body>
+  <script>
+    class React {
+      constructor() {
+        this.library = "react_library";
+        this.server = "https://127.168.0.123:8080";
+        document
+          .querySelector("#sampleButton")
+          .addEventListener("click", this.handleButtonClick.bind(this));
+      }
+      handleButtonClick() {
+        console.log(this.server);
+      }
+    }
+
+    const app = new React();
+  </script>
+</html>
