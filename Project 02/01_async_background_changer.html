@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Async Background Changer</title>
+  </head>
+  <body>
+    <button id="startBtn">Start</button>
+    <button id="stopBtn">Stop</button>
+  </body>
+  <script>
+    let colorHex = "123456789ABCDEFGH";
+    let startColorRandomize, endColorRandomize;
+
+    const changeColor = () => {
+      let color = "#";
+      for (let i = 0; i < 6; i++) {
+        let randomNumber = Math.floor(Math.random() * 16);
+        color += colorHex[randomNumber];
+      }
+      document.body.style.backgroundColor = color;
+      color = null;
+    };
+
+    const start = document.querySelector("#startBtn");
+    const end = document.querySelector("#stopBtn");
+
+    start.addEventListener("click", function (e) {
+      startColorRandomize = setInterval(changeColor, 500);
+    });
+    end.addEventListener("click", function (e) {
+      endColorRandomize = clearInterval(startColorRandomize);
+    });
+  </script>
+</html>
