@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=`, initial-scale=1.0" />
+    <title>Async Function</title>
+  </head>
+  <body>
+    <h1>Async Functions</h1>
+    <button id="btn">Stop Me</button>
+  </body>
+  <script>
+    let stopBtn = document.querySelector("#btn");
+
+    const getName = () => {
+      let title = document.querySelector("h1");
+      title.innerHTML = `Hello Test user ${Date.now()}`;
+    };
+    // const timeForName = setTimeout(getName, 5000);
+
+    const changeMe = setInterval(getName, 1000);
+    stopBtn.addEventListener("click", function (e) {
+      console.log("timeout cleared!!!");
+      //   clearTimeout(timeForName);
+      clearInterval(changeMe);
+    });
+  </script>
+</html>
